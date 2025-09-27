@@ -1,8 +1,6 @@
 # encoding: UTF-8
 # frozen_string_literal: true
 
-require 'concurrent'
-
 module TZInfo
   # Maintains a pool of `String` instances. The {#dedupe} method will return
   # either a pooled copy of a given `String` or add the instance to the pool.
@@ -51,7 +49,7 @@ module TZInfo
     protected
 
     def create_hash(&block)
-      Concurrent::Map.new(&block)
+      Hash.new(&block)
     end
   end
   private_constant :ConcurrentStringDeduper

@@ -1,7 +1,6 @@
 # encoding: UTF-8
 # frozen_string_literal: true
 
-require 'concurrent'
 require 'thread'
 
 module TZInfo
@@ -164,7 +163,7 @@ module TZInfo
     # Initializes a new {DataSource} instance. Typically only called via
     # subclasses of {DataSource}.
     def initialize
-      @timezones = Concurrent::Map.new
+      @timezones = Hash.new
     end
 
     # Returns a {DataSources::TimezoneInfo} instance for the given identifier.
