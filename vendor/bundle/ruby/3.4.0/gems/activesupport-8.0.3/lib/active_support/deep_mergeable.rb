@@ -1,2 +1,0 @@
-module ActiveSupport;module DeepMergeable
-def deep_merge(other,&block)dup.deep_merge!(other,&block);end;def deep_merge!(other,&block)merge!(other) do |key,this_val,other_val|if this_val.is_a?(DeepMergeable)&&this_val.deep_merge?(other_val);this_val.deep_merge(other_val,&block);elsif block_given?;block.call(key,this_val,other_val);else other_val;end;end;end;def deep_merge?(other)other.is_a?(self.class);end;end;end

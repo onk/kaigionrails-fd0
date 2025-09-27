@@ -1,1 +1,0 @@
-module ActionController;module Caching;extend ActiveSupport::Concern;included do include AbstractController::Caching;end;private;def instrument_payload(key){controller:controller_name,action:action_name,key:key};end;def instrument_name;"action_controller";end;end;end

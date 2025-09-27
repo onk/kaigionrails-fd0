@@ -1,1 +1,0 @@
-class Module;def deprecate(*method_names,deprecator:,**options)if deprecator.is_a?(ActiveSupport::Deprecation);deprecator.deprecate_methods(self,*method_names,**options);elsif deprecator;ActiveSupport.deprecator.deprecate_methods(self,*method_names,**options,deprecator:deprecator);end;end;end

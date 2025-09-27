@@ -1,2 +1,0 @@
-class Module;require"active_support/delegation";DelegationError=ActiveSupport::DelegationError
-def delegate(*methods,to:nil,prefix:nil,allow_nil:nil,private:nil)::ActiveSupport::Delegation.generate(self,methods,location:caller_locations(1,1).first,to:to,prefix:prefix,allow_nil:allow_nil,private:private,);end;def delegate_missing_to(target,allow_nil:nil)::ActiveSupport::Delegation.generate_method_missing(self,target,allow_nil:allow_nil,);end;end

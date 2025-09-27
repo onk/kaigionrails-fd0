@@ -1,1 +1,0 @@
-module ActiveSupport;class ArrayInquirer<Array;def any?(*candidates)if candidates.none?;super ;else candidates.any? do |candidate|include?(candidate.to_sym)||include?(candidate.to_s);end;end;end;private;def respond_to_missing?(name,include_private=false)name.end_with?("?")||super ;end;def method_missing(name,...)if name.end_with?("?");any?(name[0..-2]);else super ;end;end;end;end

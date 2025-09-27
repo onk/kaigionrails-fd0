@@ -1,1 +1,0 @@
-require"rails/app_loader";Rails::AppLoader.exec_app;Signal.trap("INT"){puts;exit(1)};require"rails/command";case ARGV.first;when Rails::Command::HELP_MAPPINGS,"help",nil;ARGV.shift;Rails::Command.invoke:gem_help,ARGV;when "plugin";ARGV.shift;Rails::Command.invoke:plugin,ARGV;else Rails::Command.invoke:application,ARGV;end

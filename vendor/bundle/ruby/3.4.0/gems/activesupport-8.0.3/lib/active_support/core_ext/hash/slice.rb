@@ -1,1 +1,0 @@
-class Hash;def slice!(*keys)omit=slice(*self.keys-keys);hash=slice(*keys);hash.default=default;hash.default_proc=default_proc if default_proc;replace(hash);omit;end;def extract!(*keys)keys.each_with_object(self.class.new){|key,result|result[key]=delete(key) if has_key?(key)};end;end

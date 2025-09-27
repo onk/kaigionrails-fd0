@@ -1,2 +1,0 @@
-module Rails;class Autoloaders
-require_relative"autoloaders/inflector";include Enumerable;attr_reader:main,:once;def initialize;require"zeitwerk";@main=Zeitwerk::Loader.new;@main.tag="rails.main";@main.inflector=Inflector;@once=Zeitwerk::Loader.new;@once.tag="rails.once";@once.inflector=Inflector;end;def each;yield main;yield once;end;def logger=(logger)each{|loader|loader.logger=logger};end;def log!;each(&:log!);end;def zeitwerk_enabled?;true;end;end;end

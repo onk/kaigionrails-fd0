@@ -1,1 +1,0 @@
-class String;def at(position)self[position];end;def from(position)self[position,length];end;def to(position)position+=size if position<0;self[0,position+1]||+"";end;def first(limit=1)self[0,limit]||raise(ArgumentError,"negative limit");end;def last(limit=1)self[[length-limit,0].max,limit]||raise(ArgumentError,"negative limit");end;end

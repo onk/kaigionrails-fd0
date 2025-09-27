@@ -1,1 +1,0 @@
-require"active_support/logger_silence";module Rails;module Rack;class SilenceRequest;def initialize(app,path:)@app,@path=app,path;end;def call(env)if env["PATH_INFO"]==@path;Rails.logger.silence{@app.call(env)};else @app.call(env);end;end;end;end;end

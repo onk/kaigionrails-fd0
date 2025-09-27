@@ -1,1 +1,0 @@
-class Object;def acts_like?(duck)case duck;when :time;respond_to?:acts_like_time?;when :date;respond_to?:acts_like_date?;when :string;respond_to?:acts_like_string?;else respond_to?:"acts_like_#{duck}?";end;end;end

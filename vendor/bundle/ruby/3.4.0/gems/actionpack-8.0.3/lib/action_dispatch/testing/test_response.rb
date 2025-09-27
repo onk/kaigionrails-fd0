@@ -1,1 +1,0 @@
-require"action_dispatch/testing/request_encoder";module ActionDispatch;class TestResponse<Response;def self.from_response(response)new response.status,response.headers,response.body;end;def parsed_body;@parsed_body||=response_parser.call(body);end;def response_parser;@response_parser||=RequestEncoder.parser(media_type);end;end;end

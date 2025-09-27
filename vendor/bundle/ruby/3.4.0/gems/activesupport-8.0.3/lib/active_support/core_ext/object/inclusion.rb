@@ -1,1 +1,0 @@
-class Object;def in?(another_object)case another_object;when Range;another_object.cover?(self);else another_object.include?(self);end;rescue NoMethodError;raise ArgumentError.new("The parameter passed to #in? must respond to #include?");end;def presence_in(another_object)in?(another_object) ? self: nil;end;end

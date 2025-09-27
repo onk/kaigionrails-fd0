@@ -1,4 +1,0 @@
-require"delegate";module ActiveSupport;class SyntaxErrorProxy<DelegateClass(SyntaxError)
-def backtrace;parse_message_for_trace+super ;end;class BacktraceLocation<Struct.new(:path,:lineno,:to_s)
-def spot(_)end;def label;end;end;class BacktraceLocationProxy<DelegateClass(Thread::Backtrace::Location)
-def initialize(loc,ex)super(loc);@ex=ex;end;def spot(_)super(@ex.__getobj__);end;end;def backtrace_locations;return nil if super .nil?;parse_message_for_trace.map{|trace|file,line=trace.match(/^(.+?):(\d+).*$/,&:captures)||trace;BacktraceLocation.new(file,line.to_i,trace);}+super .map{|loc|BacktraceLocationProxy.new(loc,self)};end;private;def parse_message_for_trace;if __getobj__.to_s.start_with?("(eval");location=__getobj__.backtrace_locations[0];["#{location.path}:#{location.lineno}: #{__getobj__}"];else __getobj__.to_s.split("\n");end;end;end;end

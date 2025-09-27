@@ -1,7 +1,0 @@
-require"weakref";module ActiveSupport;module DescendantsTracker;@clear_disabled=false;if RUBY_ENGINE=="ruby";class WeakSet<ObjectSpace::WeakMap
-alias_method:to_a,:keys;def <<(object)self[object]=true;end;end;else class WeakSet
-def initialize;@map=ObjectSpace::WeakMap.new;end;def [](object)@map.key?(object.object_id);end;alias_method:include?,:[];def []=(object,_present)@map[object.object_id]=object;end;def to_a;@map.values;end;def <<(object)self[object]=true;end;end;end;@excluded_descendants=WeakSet.new;module ReloadedClassesFiltering
-def subclasses;DescendantsTracker.reject!(super );end;def descendants;DescendantsTracker.reject!(super );end;end;class <<self;def disable_clear!
-unless @clear_disabled;@clear_disabled=true;ReloadedClassesFiltering.remove_method(:subclasses);ReloadedClassesFiltering.remove_method(:descendants);@excluded_descendants=nil;end;end;def clear(classes)
-raise"DescendantsTracker.clear was disabled because config.enable_reloading is false" if @clear_disabled;classes.each do |klass|@excluded_descendants<<klass;klass.descendants.each do |descendant|@excluded_descendants<<descendant;end;end;end;def reject!(classes)
-if @excluded_descendants;classes.reject!{|d|@excluded_descendants.include?(d)};end;classes;end;end;class <<self;def subclasses(klass)klass.subclasses;end;def descendants(klass)klass.descendants;end;end;def descendants;subclasses=DescendantsTracker.reject!(self.subclasses);subclasses.concat(subclasses.flat_map(&:descendants));end;end;end

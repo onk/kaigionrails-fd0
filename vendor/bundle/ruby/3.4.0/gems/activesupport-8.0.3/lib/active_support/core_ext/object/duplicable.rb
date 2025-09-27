@@ -1,1 +1,0 @@
-class Object;def duplicable?;true;end;end;methods_are_duplicable=begin Object.instance_method(:duplicable?).dup;true;rescue TypeError;false;end;unless methods_are_duplicable;class Method;def duplicable?;false;end;end;class UnboundMethod;def duplicable?;false;end;end;end;require"singleton";module Singleton;def duplicable?;false;end;end

@@ -1,1 +1,0 @@
-require"active_support/core_ext/module/redefine_method";class Module;def remove_possible_method(method)if method_defined?(method)||private_method_defined?(method);undef_method(method);end;end;def remove_possible_singleton_method(method)singleton_class.remove_possible_method(method);end;end

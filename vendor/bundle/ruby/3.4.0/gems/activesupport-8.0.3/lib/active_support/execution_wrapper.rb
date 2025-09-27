@@ -1,9 +1,0 @@
-require"active_support/error_reporter";require"active_support/callbacks";module ActiveSupport;class ExecutionWrapper;include ActiveSupport::Callbacks;Null=Object.new
-def Null.complete!
-end;define_callbacks:run;define_callbacks:complete;def self.to_run(*args,&block)set_callback(:run,*args,&block);end;def self.to_complete(*args,&block)set_callback(:complete,*args,&block);end;RunHook=Struct.new(:hook) do 
-def before(target)hook_state=target.send(:hook_state);hook_state[hook]=hook.run;end;end;CompleteHook=Struct.new(:hook) do 
-def before(target)hook_state=target.send(:hook_state);if hook_state.key?(hook);hook.complete hook_state[hook];end;end;alias after before;end;def self.register_hook(hook,outer:false)if outer;to_run RunHook.new(hook),prepend:true;to_complete:after,CompleteHook.new(hook);else to_run RunHook.new(hook);to_complete CompleteHook.new(hook);end;end;def self.run!(reset:false)if reset;lost_instance=IsolatedExecutionState.delete(active_key);lost_instance&.complete!;else return Null if active?;end;new.tap do |instance|success=nil;begin instance.run!;success=true;ensure instance.complete! unless success;end;end;end;def self.wrap(source:"application.active_support")return yield if active?;instance=run!;begin yield ;rescue Exception=>error;error_reporter&.report(error,handled:false,source:source);raise;ensure instance.complete!;end;end;def self.perform;instance=new;instance.run;begin yield ;ensure instance.complete;end;end;def self.error_reporter
-ActiveSupport.error_reporter;end;def self.active_key
-@active_key||=:"active_execution_wrapper_#{object_id}";end;def self.active?
-IsolatedExecutionState.key?(active_key);end;def run!
-IsolatedExecutionState[self.class.active_key]=self;run;end;def run;run_callbacks(:run);end;def complete!;complete;ensure IsolatedExecutionState.delete(self.class.active_key);end;def complete;run_callbacks(:complete);end;private;def hook_state;@_hook_state||={};end;end;end

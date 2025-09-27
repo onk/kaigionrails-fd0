@@ -1,1 +1,0 @@
-require"active_support/duration";require"active_support/core_ext/numeric/time";class Integer;def months;ActiveSupport::Duration.months(self);end;alias :month:months;def years;ActiveSupport::Duration.years(self);end;alias :year:years;end

@@ -1,1 +1,0 @@
-module Kernel;module_function;def silence_warnings(&block)with_warnings(nil,&block);end;def enable_warnings(&block)with_warnings(true,&block);end;def with_warnings(flag)old_verbose,$VERBOSE=$VERBOSE,flag;yield ;ensure $VERBOSE=old_verbose;end;def suppress(*exception_classes)yield ;rescue *exception_classes;end;end

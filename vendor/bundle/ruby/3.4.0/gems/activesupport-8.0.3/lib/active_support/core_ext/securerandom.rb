@@ -1,3 +1,0 @@
-require"securerandom";module SecureRandom;BASE58_ALPHABET=("0".."9").to_a+("A".."Z").to_a+("a".."z").to_a-["0","O","I","l"];BASE36_ALPHABET=("0".."9").to_a+("a".."z").to_a;if SecureRandom.method(:alphanumeric).parameters.size==2
-def self.base58(n=16)alphanumeric(n,chars:BASE58_ALPHABET);end;else def self.base58(n=16)SecureRandom.random_bytes(n).unpack("C*").map do |byte|idx=byte%64;idx=SecureRandom.random_number(58) if idx>=58;BASE58_ALPHABET[idx];end.join;end;end;if SecureRandom.method(:alphanumeric).parameters.size==2
-def self.base36(n=16)alphanumeric(n,chars:BASE36_ALPHABET);end;else def self.base36(n=16)SecureRandom.random_bytes(n).unpack("C*").map do |byte|idx=byte%64;idx=SecureRandom.random_number(36) if idx>=36;BASE36_ALPHABET[idx];end.join;end;end;end

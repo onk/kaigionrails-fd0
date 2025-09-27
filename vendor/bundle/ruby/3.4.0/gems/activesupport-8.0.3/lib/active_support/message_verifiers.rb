@@ -1,1 +1,0 @@
-require"active_support/messages/rotation_coordinator";module ActiveSupport;class MessageVerifiers<Messages::RotationCoordinator;private;def build(salt,secret_generator:,secret_generator_options:,**options)MessageVerifier.new(secret_generator.call(salt,**secret_generator_options),**options);end;end;end

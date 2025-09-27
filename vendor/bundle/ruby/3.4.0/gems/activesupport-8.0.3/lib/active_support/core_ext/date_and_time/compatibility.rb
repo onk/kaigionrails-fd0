@@ -1,3 +1,0 @@
-require"active_support/core_ext/module/attribute_accessors";require"active_support/core_ext/module/redefine_method";module DateAndTime;module Compatibility;mattr_accessor:preserve_timezone,instance_accessor:false,default:nil;singleton_class.silence_redefinition_of_method:preserve_timezone;def self.preserve_timezone
-if @@preserve_timezone.nil?;ActiveSupport.deprecator.warn("`to_time` will always preserve the receiver timezone rather than system local time in Rails 8.1.""To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`.");@@preserve_timezone=false;end;@@preserve_timezone;end;def preserve_timezone
-Compatibility.preserve_timezone;end;mattr_accessor:utc_to_local_returns_utc_offset_times,instance_writer:false,default:false;end;end

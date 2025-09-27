@@ -1,1 +1,0 @@
-module ActionController;module FormBuilder;extend ActiveSupport::Concern;included do class_attribute:_default_form_builder,instance_accessor:false;end;module ClassMethods;def default_form_builder(builder)self._default_form_builder=builder;end;end;def default_form_builder;self.class._default_form_builder;end;end;end

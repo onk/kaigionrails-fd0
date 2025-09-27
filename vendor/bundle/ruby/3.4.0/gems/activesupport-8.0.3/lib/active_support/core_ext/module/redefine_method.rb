@@ -1,2 +1,0 @@
-class Module;def silence_redefinition_of_method(method)if method_defined?(method)||private_method_defined?(method);alias_method method,method;end;end;def redefine_method(method,&block)visibility=method_visibility(method);silence_redefinition_of_method(method);define_method(method,&block);send(visibility,method);end;def redefine_singleton_method(method,&block)singleton_class.redefine_method(method,&block);end;def method_visibility(method)
-case when private_method_defined?(method);:private;when protected_method_defined?(method);:protected;else :public;end;end;end

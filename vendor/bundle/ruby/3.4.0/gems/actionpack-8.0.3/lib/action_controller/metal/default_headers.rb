@@ -1,1 +1,0 @@
-module ActionController;module DefaultHeaders;extend ActiveSupport::Concern;module ClassMethods;def make_response!(request)ActionDispatch::Response.create.tap do |res|res.request=request;end;end;end;end;end

@@ -1,1 +1,0 @@
-require"active_support/concern";class Module;module Concerning;def concerning(topic,prepend:false,&block)method=prepend ? :prepend: :include;__send__(method,concern(topic,&block));end;def concern(topic,&module_definition)const_set topic,Module.new{extend ::ActiveSupport::Concern;module_eval(&module_definition)};end;end;include Concerning;end

@@ -1,3 +1,0 @@
-require"active_support/callbacks";module ActiveSupport;module Testing;module SetupAndTeardown;def self.prepended(klass)klass.include ActiveSupport::Callbacks;klass.define_callbacks:setup,:teardown;klass.extend ClassMethods;end;module ClassMethods;def setup(*args,&block)set_callback(:setup,:before,*args,&block);end;def teardown(*args,&block)set_callback(:teardown,:after,*args,&block);end;end;def before_setup
-super ;run_callbacks:setup;end;def after_teardown
-begin run_callbacks:teardown;rescue =>e;self.failures<<Minitest::UnexpectedError.new(e);rescue Minitest::Assertion=>e;self.failures<<e;end;super ;end;end;end;end

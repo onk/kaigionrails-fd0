@@ -1,1 +1,0 @@
-require"active_support/descendants_tracker";class Class;def descendants;subclasses.concat(subclasses.flat_map(&:descendants));end;prepend ActiveSupport::DescendantsTracker::ReloadedClassesFiltering;end
