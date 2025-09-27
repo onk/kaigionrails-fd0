@@ -184,13 +184,13 @@ module ActiveSupport
       end
 
       def groups_for(name) # :nodoc:
-        groups = @groups_for.compute_if_absent(name) do
+        groups = @groups_for[name] || begin
           all_listeners_for(name).reject(&:silenceable).group_by(&:group_class).transform_values do |s|
             s.map(&:delegate)
           end
         end
 
-        silenceable_groups = @silenceable_groups_for.compute_if_absent(name) do
+        silenceable_groups = @silenceable_groups_for[name] || begin
           all_listeners_for(name).select(&:silenceable).group_by(&:group_class).transform_values do |s|
             s.map(&:delegate)
           end
