@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails"
+gem "railties"
+gem "actionpack"
 gem "webrick"
 
