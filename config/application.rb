@@ -4,7 +4,7 @@ require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
 # require "active_job/railtie"
-require "active_record/railtie"
+# require "active_record/railtie"
 # require "active_storage/engine"
 require "action_controller/railtie"
 # require "action_mailer/railtie"
@@ -22,7 +22,10 @@ module RubyRailsFd0
   class Application < Rails::Application
     # propshaft gem を外しても動くように
     config.assets = ActiveSupport::OrderedOptions.new
-
+    # active_record gem を外しても動くように
+    config.active_record = ActiveSupport::OrderedOptions.new
+    config.active_record.encryption = ActiveSupport::OrderedOptions.new
+    config.active_record.query_log_tags = []
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
