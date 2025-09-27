@@ -10,13 +10,13 @@ require "action_controller/railtie"
 # require "action_mailer/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
-require "action_view/railtie"
+# require "action_view/railtie"
 # require "action_cable/engine"
 require "rails/test_unit/railtie"
 
 # Manually require gems without Bundler
 require "action_controller"
-require "action_view"
+# require "action_view"
 
 module RubyRailsFd0
   class Application < Rails::Application
