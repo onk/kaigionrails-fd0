@@ -234,7 +234,7 @@ module ActionController
       Helpers,
       UrlFor,
       Redirecting,
-      ActionView::Layouts,
+      # ActionView::Layouts,
       Rendering,
       Renderers::All,
       ConditionalGet,
@@ -274,7 +274,7 @@ module ActionController
     include Helpers
     include UrlFor
     include Redirecting
-    include ActionView::Layouts
+    # include ActionView::Layouts
     include Rendering
     include Renderers::All
     include ConditionalGet
