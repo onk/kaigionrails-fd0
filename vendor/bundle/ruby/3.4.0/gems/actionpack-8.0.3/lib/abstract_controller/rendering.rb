@@ -3,8 +3,8 @@
 # :markup: markdown
 
 require "abstract_controller/error"
-require "action_view"
-require "action_view/view_paths"
+# require "action_view"
+# require "action_view/view_paths"
 
 module AbstractController
   class DoubleRenderError < Error
@@ -17,7 +17,7 @@ module AbstractController
 
   module Rendering
     extend ActiveSupport::Concern
-    include ActionView::ViewPaths
+    # include ActionView::ViewPaths
 
     # Normalizes arguments and options, and then delegates to render_to_body and
     # sticks the result in `self.response_body`.
