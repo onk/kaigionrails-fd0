@@ -1,27 +1,11 @@
-# frozen_string_literal: true
-
-# :markup: markdown
-
-module ActionDispatch
-  module Journey # :nodoc:
-    module NFA # :nodoc:
-      module Dot # :nodoc:
-        def to_dot
-          edges = transitions.map { |from, sym, to|
-            "  #{from} -> #{to} [label=\"#{sym || 'ε'}\"];"
-          }
-
-          <<-eodot
-digraph nfa {
+module ActionDispatch;module Journey
+module NFA
+module Dot
+def to_dot;edges=transitions.map{|from,sym,to|"  #{from} -> #{to} [label=\"#{sym||'ε'}\"];"};"digraph nfa {
   rankdir=LR;
   node [shape = doublecircle];
-  #{accepting_states.join ' '};
+  #{accepting_states.join' '};
   node [shape = circle];
-#{edges.join "\n"}
+#{edges.join"\n"}
 }
-          eodot
-        end
-      end
-    end
-  end
-end
+";end;end;end;end;end

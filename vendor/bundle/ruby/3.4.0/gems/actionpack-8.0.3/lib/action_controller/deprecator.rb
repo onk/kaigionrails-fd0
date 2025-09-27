@@ -1,9 +1,2 @@
-# frozen_string_literal: true
-
-# :markup: markdown
-
-module ActionController
-  def self.deprecator # :nodoc:
-    AbstractController.deprecator
-  end
-end
+module ActionController;def self.deprecator
+AbstractController.deprecator;end;end
