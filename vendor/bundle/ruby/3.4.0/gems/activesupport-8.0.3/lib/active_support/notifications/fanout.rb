@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "concurrent/map"
 require "active_support/core_ext/object/try"
 
 module ActiveSupport
@@ -49,11 +48,11 @@ module ActiveSupport
     class Fanout
       def initialize
         @mutex = Mutex.new
-        @string_subscribers = Concurrent::Map.new { |h, k| h.compute_if_absent(k) { [] } }
+        @string_subscribers = Hash.new { |h, k| h[k] = [] }
         @other_subscribers = []
-        @all_listeners_for = Concurrent::Map.new
-        @groups_for = Concurrent::Map.new
-        @silenceable_groups_for = Concurrent::Map.new
+        @all_listeners_for = Hash.new
+        @groups_for = Hash.new
+        @silenceable_groups_for = Hash.new
       end
 
       def inspect # :nodoc:
