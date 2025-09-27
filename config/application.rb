@@ -20,6 +20,10 @@ Bundler.require(*Rails.groups)
 
 module RubyRailsFd0
   class Application < Rails::Application
+    # propshaft gem を外しても動くように
+    config.assets = ActiveSupport::OrderedOptions.new
+
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
