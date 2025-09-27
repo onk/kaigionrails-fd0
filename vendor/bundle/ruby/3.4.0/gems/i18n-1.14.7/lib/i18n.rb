@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'concurrent/map'
-require 'concurrent/hash'
-
 require 'i18n/version'
 require 'i18n/utils'
 require 'i18n/exceptions'
@@ -36,7 +33,7 @@ module I18n
   EMPTY_HASH = {}.freeze
 
   def self.new_double_nested_cache # :nodoc:
-    Concurrent::Map.new { |h, k| h[k] = Concurrent::Map.new }
+    Hash.new { |h, k| h[k] = Hash.new }
   end
 
   # Marks a key as reserved. Reserved keys are used internally,
