@@ -254,11 +254,11 @@ module ActionDispatch
       def build_backtrace
         built_methods = {}
 
-        ActionView::PathRegistry.all_resolvers.each do |resolver|
-          resolver.built_templates.each do |template|
-            built_methods[template.method_name] = template
-          end
-        end
+        # ActionView::PathRegistry.all_resolvers.each do |resolver|
+        #   resolver.built_templates.each do |template|
+        #     built_methods[template.method_name] = template
+        #   end
+        # end
 
         (@exception.backtrace_locations || []).map do |loc|
           if built_methods.key?(loc.label.to_s)
